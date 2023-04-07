@@ -11,6 +11,10 @@
 ** is substantially reduced.  This is important for embedded applications
 ** on platforms with limited memory.
 */
+
+#include "sqliteInt.h"
+#include "sqlite3.h"
+#include "parse.h"
 /* Hash score: 231 */
 /* zKWText[] encodes 1007 bytes of keyword text in 667 bytes */
 /*   REINDEXEDESCAPEACHECKEYBEFOREIGNOREGEXPLAINSTEADDATABASELECT       */

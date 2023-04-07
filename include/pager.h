@@ -16,6 +16,7 @@
 
 #ifndef SQLITE_PAGER_H
 #define SQLITE_PAGER_H
+#include "sqliteInt.h"
 
 /*
 ** Default maximum size for persistent journal files. A negative 

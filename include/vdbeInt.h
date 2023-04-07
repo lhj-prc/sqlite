@@ -17,6 +17,7 @@
 */
 #ifndef SQLITE_VDBEINT_H
 #define SQLITE_VDBEINT_H
+#include "sqliteInt.h"
 
 /*
 ** The maximum number of times that a statement will try to reparse

@@ -16,6 +16,7 @@
 */
 #ifndef SQLITE_WHEREINT_H
 #define SQLITE_WHEREINT_H
+#include "sqliteInt.h"
 
 
 /* Forward references

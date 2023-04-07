@@ -15,6 +15,7 @@
 */
 #ifndef SQLITE_BTREE_H
 #define SQLITE_BTREE_H
+#include "sqliteInt.h"
 
 /* TODO: This definition is just included so other modules compile. It
 ** needs to be revisited.

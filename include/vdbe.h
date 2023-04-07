@@ -18,6 +18,7 @@
 #ifndef SQLITE_VDBE_H
 #define SQLITE_VDBE_H
 #include <stdio.h>
+#include "sqliteInt.h"
 
 /*
 ** A single VDBE is an opaque structure named "Vdbe".  Only routines

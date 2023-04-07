@@ -1,5 +1,4 @@
 bin/
-bld/
 build/
 cmake-build-*/
 CMakeLists.txt.user

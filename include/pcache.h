@@ -12,6 +12,7 @@
 ** This header file defines the interface that the sqlite page cache
 ** subsystem. 
 */
+#include "sqliteInt.h"
 
 #ifndef _PCACHE_H_
 

@@ -25,6 +25,8 @@
 ** necessary pre-processor macros for it.
 */
 #include "os_setup.h"
+#include "sqliteInt.h"
+#include "sqlite3.h"
 
 /* If the SET_FULLSYNC macro is not defined above, then make it
 ** a no-op

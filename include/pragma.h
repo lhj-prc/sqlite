@@ -4,6 +4,9 @@
 ** that script and rerun it.
 */
 
+#include "sqliteInt.h"
+
+
 /* The various pragma types */
 #define PragTyp_ACTIVATE_EXTENSIONS            0
 #define PragTyp_ANALYSIS_LIMIT                 1
