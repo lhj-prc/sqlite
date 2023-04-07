@@ -26,7 +26,7 @@
 ** switch.  The following code should catch this problem at compile-time.
 */
 #ifdef MEMORY_DEBUG
-# error "The MEMORY_DEBUG macro is obsolete.  Use SQLITE_DEBUG instead."
+    # error "The MEMORY_DEBUG macro is obsolete.  Use SQLITE_DEBUG instead."
 #endif
 
 /*
@@ -35,15 +35,15 @@
 */
 #ifdef SQLITE_PERFORMANCE_TRACE
 
-static sqlite_uint64 g_start;
-static sqlite_uint64 g_elapsed;
-#define TIMER_START       g_start=sqlite3Hwtime()
-#define TIMER_END         g_elapsed=sqlite3Hwtime()-g_start
-#define TIMER_ELAPSED     g_elapsed
+    static sqlite_uint64 g_start;
+    static sqlite_uint64 g_elapsed;
+    #define TIMER_START       g_start=sqlite3Hwtime()
+    #define TIMER_END         g_elapsed=sqlite3Hwtime()-g_start
+    #define TIMER_ELAPSED     g_elapsed
 #else
-#define TIMER_START
-#define TIMER_END
-#define TIMER_ELAPSED     ((sqlite_uint64)0)
+    #define TIMER_START
+    #define TIMER_END
+    #define TIMER_ELAPSED     ((sqlite_uint64)0)
 #endif
 
 /*
@@ -61,25 +61,28 @@ extern int sqlite3_diskfull_pending;
 extern int sqlite3_diskfull;
 #define SimulateIOErrorBenign(X) sqlite3_io_error_benign=(X)
 #define SimulateIOError(CODE)  \
-  if( (sqlite3_io_error_persist && sqlite3_io_error_hit) \
-       || sqlite3_io_error_pending-- == 1 )  \
-              { local_ioerr(); CODE; }
-static void local_ioerr(){
-  IOTRACE(("IOERR\n"));
-  sqlite3_io_error_hit++;
-  if( !sqlite3_io_error_benign ) sqlite3_io_error_hardhit++;
+    if( (sqlite3_io_error_persist && sqlite3_io_error_hit) \
+        || sqlite3_io_error_pending-- == 1 )  \
+    { local_ioerr(); CODE; }
+static void local_ioerr()
+{
+    IOTRACE(("IOERR\n"));
+    sqlite3_io_error_hit++;
+    if (!sqlite3_io_error_benign) {
+        sqlite3_io_error_hardhit++;
+    }
 }
 #define SimulateDiskfullError(CODE) \
-   if( sqlite3_diskfull_pending ){ \
-     if( sqlite3_diskfull_pending == 1 ){ \
-       local_ioerr(); \
-       sqlite3_diskfull = 1; \
-       sqlite3_io_error_hit = 1; \
-       CODE; \
-     }else{ \
-       sqlite3_diskfull_pending--; \
-     } \
-   }
+    if( sqlite3_diskfull_pending ){ \
+        if( sqlite3_diskfull_pending == 1 ){ \
+            local_ioerr(); \
+            sqlite3_diskfull = 1; \
+            sqlite3_io_error_hit = 1; \
+            CODE; \
+        }else{ \
+            sqlite3_diskfull_pending--; \
+        } \
+    }
 #else
 #define SimulateIOErrorBenign(X)
 #define SimulateIOError(A)
@@ -90,10 +93,10 @@ static void local_ioerr(){
 ** When testing, keep a count of the number of open files.
 */
 #if defined(SQLITE_TEST)
-extern int sqlite3_open_file_count;
-#define OpenCounter(X)  sqlite3_open_file_count+=(X)
+    extern int sqlite3_open_file_count;
+    #define OpenCounter(X)  sqlite3_open_file_count+=(X)
 #else
-#define OpenCounter(X)
+    #define OpenCounter(X)
 #endif /* defined(SQLITE_TEST) */
 
 #endif /* !defined(_OS_COMMON_H_) */
